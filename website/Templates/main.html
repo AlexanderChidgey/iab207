@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+{% block content %}
+<div class="Main">
+    <div class="container py-4">
+    <!-- Box 1 -->
+     {% for event in events %}
+     {% if loop.first %}
+    <div class="content-box p-3 border mb-4">
+        <div class="row mb-4">
+        <div class="col-md-6 d-flex flex-column justify-content-between">
+            <h1>Most Popular Event Near You!</h1>
+
+            <!-- <h3>Coldplay Music of the Spheres</h3> -->
+             <h3>{{ event.name }}</h3>
+            <p>Here is the most popular event near you that still has tickets</p>
+
+            <div class="mt-auto">
+            <a href="viewEventDetails.html">
+            <button class="goToEvent">Go to event</button>
+            </a>
+            </div>
+        </div>
+        <div class="col-md-6 mx-10" style="padding:10px">
+            <img src="{{event.photo}}" style="width: 600px; height:300px">
+        </div>
+        </div>
+        {%endif%}
+        {%endfor%}
+    </div>
+        <!-- Box 2 -->
+        <div class="content-box p-3 border">
+            <div class="row mb-4">
+              <div class="col-12 text-center">
+                <h1>Upcoming Events</h1>
+          
+                <!-- Loop through events -->
+                <div class="row"> <!-- Start a new row for the grid -->
+                {% for event in events[:6] %}
+                  <!-- Event Box -->
+                  <div class="col-md-4 mb-4"> <!-- Ensure three events per row -->
+                    <div class="eventDetails text-center">
+                      {{ event.name }} - {{ event.status }}<br>
+                      <img src="{{ event.photo }}" style="width: 300px; height: 300px;">
+                    </div>
+                  </div>
+                  
+                  <!-- Close the row after every 3 events -->
+                  {% if loop.index0 % 3 == 2 %}
+                    </div>
+                    <div class="row mt-4">
+                  {% endif %}
+
+          
+                {% endfor %}
+                </div> <!-- End the row after all events are added -->
+              </div>
+            </div>
+          </div>
+            
+    </div>
+
+{% endblock %}

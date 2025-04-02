@@ -18,13 +18,13 @@
             <p>Here is the most popular event near you that still has tickets</p>
 
             <div class="mt-auto">
-            <a href="viewEventDetails.html">
+              <a href="/event/{{event.id}}">
             <button class="goToEvent">Go to event</button>
             </a>
             </div>
         </div>
         <div class="col-md-6 mx-10" style="padding:10px">
-            <img src="{{event.photo}}" style="width: 600px; height:300px">
+            <img src="{{ url_for('static',filename=event.photo) }}" style="width: 600px; height:300px">
         </div>
         </div>
         {%endif%}
@@ -43,7 +43,7 @@
                   <div class="col-md-4 mb-4"> <!-- Ensure three events per row -->
                     <div class="eventDetails text-center">
                       {{ event.name }} - {{ event.status }}<br>
-                      <img src="{{ event.photo }}" style="width: 300px; height: 300px;">
+                      <img src="{{ url_for('static',filename=event.photo) }}" style="width: 300px; height: 300px;">
                     </div>
                   </div>
                   
@@ -62,4 +62,12 @@
             
     </div>
 
+    <script>
+      function searchClick(){
+          var category = document.getElementById('eventCategory');
+          var location = document.getElementById('input-field');
+          console.log(category.value);
+          console.log(location.value);
+      }
+  </script>
 {% endblock %}

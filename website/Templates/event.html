@@ -5,16 +5,18 @@
 {% block content %}
   <div class="content-box p-3 border mb-4">
       <h1>Event Details</h1>
-      <img src="{{ url_for('static', filename='Images/coldplay.jpg') }}" class="mx-auto d-block" style="width: 600px; height:300px"><br>
+      <img src="{{ url_for('static', filename=events.photo) }}" class="mx-auto d-block" style="width: 600px; height:300px">
 
       <div class="row">
           <div class="col">
-              <h2>Coldplay Music of the Spheres - Open</h2>
+              <h2> {{ events.name }} </h2>
+              
+
               <p><strong>7 November 2025</strong></p>
 
               <p><strong>Event description:</strong></p>
               <div class="border p-3 mb-4" style="background-color: #f8f9fa;">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                  {{events.description}}
               </div>
 
               <p><strong>Location</strong></p>
